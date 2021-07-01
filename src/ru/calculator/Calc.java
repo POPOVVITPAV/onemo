@@ -22,13 +22,37 @@ public class Calc {
 	} 
 	
 	public static char getOperation() {
-		System.out.print("Input operation +,-,*,/"){
-			
+		System.out.print("Input operation +,-,*,/");
+		char operation;
+		if(sc.hasNext()) {
+			operation = sc.next().charAt(0);
+		}else {
+			sc.next();
+			operation=getOperation();
 		}
+		return operation;
 	}
 	
-	public static int calc() {
-		
+	public static int calc(int num_1, int num_2, char operation) {
+		int result;
+		switch(operation) {
+			case'+':
+				result=num_1+num_2;
+				break;
+			case'-':
+				result=num_1-num_2;
+				break;
+			case'*':
+				result=num_1*num_2;
+				break;
+			case'/':
+				result=num_1/num_2;
+				break;
+			default:
+				System.out.print("Операция не распознана. Повторите ввод.");
+				result = calc(num_1,num_2, getOperation());
+			}
+		return result;
 	}
 	
 }
